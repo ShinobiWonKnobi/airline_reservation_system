@@ -1,0 +1,19 @@
+<!-- templates/dashboard/main_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content -->
+    <title>Main Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ session['username'] }}!</h1>
+
+    <ul>
+        <li><a href="{{ url_for('dashboard_profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('dashboard_book_flight') }}">Book Flight</a></li>
+        <!-- Add more links for other sections -->
+    </ul>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

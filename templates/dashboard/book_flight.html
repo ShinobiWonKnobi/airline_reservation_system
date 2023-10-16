@@ -1,0 +1,35 @@
+<!-- templates/dashboard/book_flight.html -->
+{% extends 'dashboard/main_dashboard.html' %}
+
+{% block content %}
+<!-- templates/dashboard/book_flight.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Flight</title>
+</head>
+<body>
+    <h1>Available Flights</h1>
+    
+    <ul>
+        {% for flight in flights %}
+            <li>
+                <strong>{{ flight.source }}</strong> to <strong>{{ flight.destination }}</strong>
+                <br>
+                Departure Time: {{ flight.departure_time }}
+                <br>
+                Price: {{ flight.price }}
+                <br>
+                <a href="{{ url_for('confirm_booking', flight_id=flight.id) }}">Book Now</a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+{% endblock %}
+
