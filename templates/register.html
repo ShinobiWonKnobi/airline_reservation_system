@@ -3,6 +3,30 @@
 <html>
 <head>
     <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        h1 {
+            text-align: center;
+        }
+        label, input, button {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
 </head>
 <body>
     <h1>User Registration</h1>

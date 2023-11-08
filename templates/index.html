@@ -6,12 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airline Reservation System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+        }
+        .button {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.296); /* Make the button translucent */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: white;
+            color: black;
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Airline Reservation System</h1>
     <p>Please register or log in to access available flights.</p>
 
-    <a href="{{ url_for('register') }}">Register</a>
-    <a href="{{ url_for('login') }}">Login</a>
+    <a class="button" href="{{ url_for('register') }}">Register</a>
+    <a class="button" href="{{ url_for('login') }}">Login</a>
 </body>
 </html>

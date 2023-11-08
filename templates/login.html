@@ -3,6 +3,38 @@
 <html>
 <head>
     <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+        }
+        .button {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.296); /* Make the button translucent */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: white;
+            color: black;
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>User Login</h1>
@@ -13,7 +45,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br>
 
-        <button type="submit">Login</button>
+        <button class="button" type="submit">Login</button>
     </form>
 </body>
 </html>

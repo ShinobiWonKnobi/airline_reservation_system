@@ -2,34 +2,49 @@
 {% extends 'dashboard/main_dashboard.html' %}
 
 {% block content %}
-<!-- templates/dashboard/book_flight.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Flight</title>
-</head>
-<body>
     <h1>Available Flights</h1>
     
-    <ul>
-        {% for flight in flights %}
-            <li>
-                <strong>{{ flight.source }}</strong> to <strong>{{ flight.destination }}</strong>
-                <br>
-                Departure Time: {{ flight.departure_time }}
-                <br>
-                Price: {{ flight.price }}
-                <br>
-                <a href="{{ url_for('confirm_booking', flight_id=flight.id) }}">Book Now</a>
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
+    <style>
+        .flight-table {
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .flight-table tr {
+            padding: 10px 0;
+        }
+        .book-button {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.296);
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .book-button:hover {
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+        }
+    </style>
+
+    <table class="flight-table">
+        <tr>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Departure Time</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.source }}</td>
+            <td>{{ flight.destination }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.price }}</td>
+            <td><a class="book-button" href="{{ url_for('confirm_booking', flight_id=flight.id) }}">Book Now</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
 

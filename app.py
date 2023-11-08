@@ -134,8 +134,13 @@ def dashboard():
 def dashboard_profile():
     if 'logged_in' in session:
         # Fetch user profile data from the database
-        profile_data = get_user_profile(session['username'])  # Implement this function
-        return render_template('dashboard/profile.html', profile_data=profile_data)
+        cur = mysql.connection.cursor()
+        result = cur.execute("SELECT * FROM users WHERE username = %s", [session['username']])
+        if result > 0:
+            profile_data = cur.fetchone()
+            return render_template('dashboard/profile.html', profile_data=profile_data)
+        else:
+            return render_template('dashboard/profile.html', error='User not found')
     else:
         return redirect(url_for('login', next=request.url))
 
@@ -146,7 +151,11 @@ def dashboard_book_flight():
     flights = [
         {"id": 1, "source": "City A", "destination": "City B", "departure_time": "12:00 PM", "price": 150},
         {"id": 2, "source": "City C", "destination": "City D", "departure_time": "2:30 PM", "price": 200},
-        # Add more flights as needed
+        {"id": 3, "source": "City E", "destination": "City F", "departure_time": "4:00 PM", "price": 250},
+        {"id": 4, "source": "City G", "destination": "City H", "departure_time": "6:00 PM", "price": 300},
+        {"id": 5, "source": "City I", "destination": "City J", "departure_time": "8:00 PM", "price": 350},
+        {"id": 6, "source": "City K", "destination": "City L", "departure_time": "10:00 PM", "price": 400},
+        {"id": 7, "source": "City M", "destination": "City N", "departure_time": "12:00 AM", "price": 450},
     ]
 
     return render_template('dashboard/book_flight.html', flights=flights)
